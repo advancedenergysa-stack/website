@@ -13,6 +13,8 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Cloudflare Workers
 
+**Workers Builds:** use build command `npm run build` and deploy command `npx wrangler deploy` (or `npm run deploy` if your pipeline runs a single script). The default `build` script runs the OpenNext Cloudflare builder so `.open-next/` exists before Wrangler deploys.
+
 Preview in the Workers runtime (after a production build):
 
 ```bash
