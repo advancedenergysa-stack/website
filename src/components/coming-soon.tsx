@@ -3,8 +3,7 @@ import { Mail } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "info@advancedenergysa.com";
+const CONTACT_EMAIL = "advancedenergysa@gmail.com";
 
 export function ComingSoon() {
   return (
@@ -19,20 +18,16 @@ export function ComingSoon() {
         }}
       />
       <div className="relative z-10 flex max-w-lg flex-col items-center text-center">
-        <p className="coming-rise text-xs font-medium uppercase tracking-[0.35em] text-neutral-400">
-          South Africa
-        </p>
-        <h1 className="coming-rise coming-rise-delay-1 mt-5 font-sans text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="coming-rise font-sans text-4xl font-semibold tracking-tight sm:text-5xl">
           Advanced Energy SA
         </h1>
-        <div className="coming-rise coming-rise-delay-2 mt-8 h-px w-24 overflow-hidden bg-neutral-800">
+        <div className="coming-rise coming-rise-delay-1 mt-8 h-px w-24 overflow-hidden bg-neutral-800">
           <div className="coming-scan-line h-full w-1/2 bg-white/90" />
         </div>
-        <p className="coming-rise coming-rise-delay-3 mt-8 max-w-md text-base leading-relaxed text-neutral-300 sm:text-lg">
-          We are preparing our next chapter in sustainable power. A new digital
-          experience is on the way.
+        <p className="coming-rise coming-rise-delay-2 mt-8 max-w-md text-base leading-relaxed text-neutral-300 sm:text-lg">
+          We&apos;re preparing something new. Check back soon.
         </p>
-        <div className="coming-rise coming-rise-delay-4 mt-10 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
+        <div className="coming-rise coming-rise-delay-3 mt-10 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
           <span className="text-sm font-medium tracking-wide text-neutral-200">
             Coming soon
             <span className="inline-flex gap-1 pl-1 align-middle">

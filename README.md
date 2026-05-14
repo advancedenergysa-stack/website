@@ -27,7 +27,7 @@ Deploy:
 npm run deploy
 ```
 
-Set `NEXT_PUBLIC_CONTACT_EMAIL` if you want the contact link to use a specific address (defaults to `info@advancedenergysa.com` in the UI).
+The public contact address on the landing page is set in `src/components/coming-soon.tsx`.
 
 ## Learn more
 

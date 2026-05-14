@@ -14,12 +14,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Advanced Energy SA — Coming soon",
-  description:
-    "Advanced Energy SA is preparing a new digital experience. Sustainable energy for South Africa.",
+  description: "Something new is on the way.",
   openGraph: {
     title: "Advanced Energy SA — Coming soon",
-    description:
-      "A new digital experience from Advanced Energy SA is on the way.",
+    description: "Something new is on the way.",
     type: "website",
   },
 };
