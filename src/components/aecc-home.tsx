@@ -1,15 +1,20 @@
 import {
-  Award,
+  ArrowRight,
   Building2,
+  CheckCircle2,
+  Handshake,
   Leaf,
   Mail,
+  MapPin,
   Phone,
+  Send,
   Shield,
-  Zap,
+  Target,
 } from "lucide-react";
 import Image from "next/image";
 
 import { BrandLogo } from "@/components/brand-logo";
+import { IconBadge } from "@/components/icon-badge";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -29,38 +34,37 @@ import {
   mission,
   overview,
   projects,
+  sectionIcons,
   services,
   stats,
   vision,
 } from "@/lib/aecc-content";
+import { getIcon, type IconName } from "@/lib/aecc-icons";
 import { cn } from "@/lib/utils";
-
-const statIcons = [Award, Zap, Building2];
 
 export function AeccHome() {
   return (
     <>
       <section
         id="home"
-        className="relative overflow-hidden bg-white"
+        className="relative overflow-hidden border-b border-border bg-white"
       >
-        <div className="absolute inset-0">
-          <Image
-            src="/aecc/asset-p04-02.jpeg"
-            alt=""
-            fill
-            className="object-cover object-right"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/20" />
-        </div>
-        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-32">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, rgb(0 122 83 / 0.12) 1px, transparent 0)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+        <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-32">
           <div className="max-w-xl">
             <Badge
               variant="outline"
-              className="mb-4 border-aecc-green/30 bg-aecc-green/5 text-aecc-green"
+              className="mb-4 gap-1.5 border-aecc-green/30 bg-aecc-green/5 text-aecc-green"
             >
+              <Target className="size-3.5" aria-hidden />
               {brand.tagline}
             </Badge>
             <h1 className="text-4xl font-bold tracking-tight text-aecc-green sm:text-5xl lg:text-6xl">
@@ -78,21 +82,43 @@ export function AeccHome() {
                 href="#services"
                 className={cn(
                   buttonVariants({ size: "lg" }),
-                  "bg-aecc-green text-white hover:bg-aecc-green-dark"
+                  "gap-2 bg-aecc-green text-white hover:bg-aecc-green-dark"
                 )}
               >
                 Our services
+                <ArrowRight className="size-4" aria-hidden />
               </a>
               <a
                 href="#contact"
-                className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "gap-2"
+                )}
               >
+                <Mail className="size-4" aria-hidden />
                 Contact us
               </a>
             </div>
           </div>
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex flex-col items-center gap-8 lg:items-end">
             <BrandLogo className="max-h-36 w-full max-w-sm sm:max-h-44 lg:max-w-md" priority />
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+              {stats.map((item) => {
+                const Icon = getIcon(item.icon);
+                return (
+                  <div
+                    key={item.label}
+                    className="flex flex-col items-center rounded-xl border border-border bg-white px-3 py-4 text-center shadow-sm"
+                  >
+                    <IconBadge icon={Icon} size="sm" className="mb-2" />
+                    <p className="text-lg font-bold text-aecc-green">{item.value}</p>
+                    <p className="mt-1 text-[10px] leading-tight text-muted-foreground sm:text-xs">
+                      {item.label}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -103,21 +129,22 @@ export function AeccHome() {
             eyebrow="01"
             title="Company Overview"
             description="Innovative and sustainable energy solutions for the Kingdom."
+            icon={sectionIcons.overview}
           />
           <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-start">
             <p className="whitespace-pre-line text-base leading-relaxed text-muted-foreground">
               {overview}
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
-              {stats.map((item, i) => {
-                const Icon = statIcons[i] ?? Zap;
+              {stats.map((item) => {
+                const Icon = getIcon(item.icon);
                 return (
                   <Card
                     key={item.label}
                     className="border-aecc-green/15 bg-aecc-green/5 shadow-none"
                   >
                     <CardHeader className="pb-2">
-                      <Icon className="size-5 text-aecc-green" />
+                      <IconBadge icon={Icon} size="sm" />
                       <CardTitle className="text-3xl font-bold text-aecc-green">
                         {item.value}
                       </CardTitle>
@@ -134,17 +161,21 @@ export function AeccHome() {
           </div>
           <Separator className="my-12" />
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {mascoStats.map((item) => (
-              <div
-                key={item.label}
-                className="rounded-lg border border-border bg-muted/30 px-4 py-3 text-center"
-              >
-                <p className="text-xl font-bold text-aecc-green sm:text-2xl">
-                  {item.value}
-                </p>
-                <p className="mt-1 text-xs text-muted-foreground">{item.label}</p>
-              </div>
-            ))}
+            {mascoStats.map((item) => {
+              const Icon = getIcon(item.icon);
+              return (
+                <div
+                  key={item.label}
+                  className="flex flex-col items-center rounded-lg border border-border bg-muted/30 px-3 py-4 text-center"
+                >
+                  <IconBadge icon={Icon} size="sm" className="mb-2" />
+                  <p className="text-xl font-bold text-aecc-green sm:text-2xl">
+                    {item.value}
+                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground">{item.label}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -155,45 +186,44 @@ export function AeccHome() {
             eyebrow="02"
             title="Scope of Services"
             description="Construction, renewables, and engineering solutions backed by experienced professionals."
+            icon={sectionIcons.services}
           />
-          <div className="mt-12 space-y-8">
-            {services.map((service) => (
-              <Card
-                key={service.id}
-                className="overflow-hidden border-border bg-white shadow-sm"
-              >
-                <div className="grid lg:grid-cols-[1fr_280px]">
-                  <CardHeader className="p-6 sm:p-8">
-                    <CardTitle className="text-2xl text-aecc-green">
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {services.map((service) => {
+              const Icon = getIcon(service.icon);
+              return (
+                <Card
+                  key={service.id}
+                  className="border-border bg-white shadow-sm transition-shadow hover:shadow-md"
+                >
+                  <CardHeader className="space-y-4">
+                    <IconBadge icon={Icon} size="lg" />
+                    <CardTitle className="text-xl text-aecc-green">
                       {service.title}
                     </CardTitle>
-                    <CardDescription className="mt-3 text-base leading-relaxed">
+                    <CardDescription className="text-sm leading-relaxed">
                       {service.description}
                     </CardDescription>
-                    <ul className="mt-4 space-y-2">
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2.5">
                       {service.items.map((item) => (
                         <li
                           key={item}
-                          className="flex items-center gap-2 text-sm text-foreground/80"
+                          className="flex items-start gap-2 text-sm text-foreground/80"
                         >
-                          <span className="size-1.5 shrink-0 rounded-full bg-aecc-green" />
+                          <CheckCircle2
+                            className="mt-0.5 size-4 shrink-0 text-aecc-green"
+                            aria-hidden
+                          />
                           {item}
                         </li>
                       ))}
                     </ul>
-                  </CardHeader>
-                  <div className="relative min-h-[200px] lg:min-h-full">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 280px"
-                    />
-                  </div>
-                </div>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -204,40 +234,42 @@ export function AeccHome() {
             eyebrow="03"
             title="Completed Projects"
             description="Representative EPC engagements delivered for leading energy clients."
+            icon={sectionIcons.projects}
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <Card
-                key={project.name}
-                className="overflow-hidden border-border bg-white shadow-sm transition-shadow hover:shadow-md"
-              >
-                <div className="relative h-44 overflow-hidden bg-muted">
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-lg leading-snug">
-                    {project.name}
-                  </CardTitle>
-                  <CardDescription className="space-y-1 text-xs">
-                    <span className="block font-medium text-aecc-green">
-                      {project.client}
-                    </span>
-                    <span>{project.site}</span>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {project.scope}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+            {projects.map((project) => {
+              const Icon = getIcon(project.icon);
+              return (
+                <Card
+                  key={project.name}
+                  className="overflow-hidden border-border bg-white shadow-sm transition-shadow hover:shadow-md"
+                >
+                  <div className="flex items-center gap-4 border-b border-border bg-aecc-green/5 px-5 py-4">
+                    <IconBadge icon={Icon} size="md" />
+                    <CardTitle className="text-base leading-snug">
+                      {project.name}
+                    </CardTitle>
+                  </div>
+                  <CardHeader className="pb-2 pt-4">
+                    <CardDescription className="space-y-2 text-xs">
+                      <span className="flex items-center gap-1.5 font-medium text-aecc-green">
+                        <Building2 className="size-3.5" aria-hidden />
+                        {project.client}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-muted-foreground">
+                        <MapPin className="size-3.5 shrink-0" aria-hidden />
+                        {project.site}
+                      </span>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {project.scope}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -248,12 +280,13 @@ export function AeccHome() {
             eyebrow="04"
             title="Mission, Vision & Values"
             description="Core values that shape our actions and inspire us to raise the bar in the energy sector."
+            icon={sectionIcons.values}
           />
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             <Card className="border-aecc-green/20 bg-white">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-aecc-green">
-                  <Leaf className="size-5" />
+                <CardTitle className="flex items-center gap-3 text-aecc-green">
+                  <IconBadge icon={Leaf} size="sm" />
                   Mission
                 </CardTitle>
               </CardHeader>
@@ -263,8 +296,8 @@ export function AeccHome() {
             </Card>
             <Card className="border-aecc-green/20 bg-white">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-aecc-green">
-                  <Shield className="size-5" />
+                <CardTitle className="flex items-center gap-3 text-aecc-green">
+                  <IconBadge icon={Shield} size="sm" />
                   Vision
                 </CardTitle>
               </CardHeader>
@@ -274,26 +307,33 @@ export function AeccHome() {
             </Card>
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {coreValues.map((value) => (
-              <Card key={value.title} className="bg-white shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-base text-aecc-green">
-                    {value.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {value.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+            {coreValues.map((value) => {
+              const Icon = getIcon(value.icon);
+              return (
+                <Card key={value.title} className="bg-white shadow-sm">
+                  <CardHeader className="space-y-3">
+                    <IconBadge icon={Icon} size="sm" />
+                    <CardTitle className="text-base text-aecc-green">
+                      {value.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {value.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
 
       <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+          <div className="mx-auto mb-4 flex justify-center">
+            <IconBadge icon={getIcon(sectionIcons.clients)} size="lg" />
+          </div>
           <h2 className="text-2xl font-bold tracking-tight text-aecc-green sm:text-3xl">
             Commitment to Client Satisfaction
           </h2>
@@ -301,7 +341,8 @@ export function AeccHome() {
             {commitment}
           </p>
           <div className="mt-10">
-            <p className="mb-6 text-sm font-semibold uppercase tracking-widest text-aecc-green">
+            <p className="mb-6 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-widest text-aecc-green">
+              <Handshake className="size-4" aria-hidden />
               Key clients
             </p>
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:gap-8">
@@ -330,6 +371,7 @@ export function AeccHome() {
             eyebrow="05"
             title="Contact Information"
             description="Reach our team to discuss your next energy project."
+            icon={sectionIcons.contact}
           />
           <Card className="mx-auto mt-10 max-w-xl border-aecc-green/20 bg-aecc-green/5">
             <CardContent className="flex flex-col gap-6 p-8 sm:flex-row sm:items-center sm:justify-between">
@@ -338,14 +380,14 @@ export function AeccHome() {
                   href={`mailto:${brand.email}`}
                   className="flex items-center gap-3 text-foreground hover:text-aecc-green"
                 >
-                  <Mail className="size-5 text-aecc-green" />
+                  <IconBadge icon={Mail} size="sm" />
                   <span>{brand.email}</span>
                 </a>
                 <a
                   href={`tel:${brand.phone.replace(/\s/g, "")}`}
                   className="flex items-center gap-3 text-foreground hover:text-aecc-green"
                 >
-                  <Phone className="size-5 text-aecc-green" />
+                  <IconBadge icon={Phone} size="sm" />
                   <span>{brand.phone}</span>
                 </a>
               </div>
@@ -353,9 +395,10 @@ export function AeccHome() {
                 href={`mailto:${brand.email}`}
                 className={cn(
                   buttonVariants({ size: "lg" }),
-                  "shrink-0 bg-aecc-green text-white hover:bg-aecc-green-dark"
+                  "shrink-0 gap-2 bg-aecc-green text-white hover:bg-aecc-green-dark"
                 )}
               >
+                <Send className="size-4" aria-hidden />
                 Send a message
               </a>
             </CardContent>
@@ -370,20 +413,29 @@ function SectionHeading({
   eyebrow,
   title,
   description,
+  icon,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  icon: IconName;
 }) {
+  const Icon = getIcon(icon);
   return (
     <div className="max-w-2xl">
-      <p className="text-sm font-semibold tracking-widest text-aecc-green">
-        {eyebrow}
-      </p>
-      <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-        {title}
-      </h2>
-      <p className="mt-3 text-base text-muted-foreground">{description}</p>
+      <div className="flex items-start gap-4">
+        <IconBadge icon={Icon} size="md" className="mt-1 shrink-0" />
+        <div>
+          <p className="text-sm font-semibold tracking-widest text-aecc-green">
+            {eyebrow}
+          </p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            {title}
+          </h2>
+          <p className="mt-3 text-base text-muted-foreground">{description}</p>
+        </div>
+      </div>
     </div>
   );
 }
+

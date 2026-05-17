@@ -15,6 +15,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { brand, navLinks } from "@/lib/aecc-content";
+import { getIcon } from "@/lib/aecc-icons";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -31,16 +32,20 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-aecc-green"
-            >
-              {link.label}
-            </a>
-          ))}
+        <nav className="hidden items-center gap-6 md:flex">
+          {navLinks.map((link) => {
+            const Icon = getIcon(link.icon);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className="flex items-center gap-1.5 text-sm font-medium text-foreground/80 transition-colors hover:text-aecc-green"
+              >
+                <Icon className="size-4 shrink-0 opacity-70" aria-hidden />
+                {link.label}
+              </a>
+            );
+          })}
           <a
             href="#contact"
             className={cn(
@@ -72,16 +77,20 @@ export function SiteHeader() {
               </SheetTitle>
             </SheetHeader>
             <nav className="mt-8 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="text-base font-medium text-foreground/90 hover:text-aecc-green"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const Icon = getIcon(link.icon);
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 text-base font-medium text-foreground/90 hover:text-aecc-green"
+                  >
+                    <Icon className="size-5 shrink-0 opacity-70" aria-hidden />
+                    {link.label}
+                  </a>
+                );
+              })}
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}

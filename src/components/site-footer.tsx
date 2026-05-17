@@ -1,3 +1,5 @@
+import { Mail, Phone } from "lucide-react";
+
 import { brand } from "@/lib/aecc-content";
 
 export function SiteFooter() {
@@ -7,18 +9,22 @@ export function SiteFooter() {
         <p>
           © {new Date().getFullYear()} {brand.fullName}. {brand.tagline}.
         </p>
-        <p className="text-foreground/70">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
           <a
             href={`mailto:${brand.email}`}
-            className="hover:text-aecc-green"
+            className="inline-flex items-center justify-center gap-1.5 text-foreground/70 hover:text-aecc-green sm:justify-start"
           >
+            <Mail className="size-3.5" aria-hidden />
             {brand.email}
           </a>
-          {" · "}
-          <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="hover:text-aecc-green">
+          <a
+            href={`tel:${brand.phone.replace(/\s/g, "")}`}
+            className="inline-flex items-center justify-center gap-1.5 text-foreground/70 hover:text-aecc-green sm:justify-start"
+          >
+            <Phone className="size-3.5" aria-hidden />
             {brand.phone}
           </a>
-        </p>
+        </div>
       </div>
     </footer>
   );
