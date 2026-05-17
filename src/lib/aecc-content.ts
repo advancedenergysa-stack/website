@@ -6,6 +6,10 @@ export const brand = {
   tagline: "A subsidiary of MASCO Group",
   phone: "+966 (0) 11477 7742",
   email: "advancedenergysa@gmail.com",
+  location: "Kingdom of Saudi Arabia",
+  established: 2008,
+  footerBlurb:
+    "Leading force in the construction and management of energy projects across Saudi Arabia since 2008 — EPC substations, transmission lines, underground cables, and renewables.",
 };
 
 export const stats: {
