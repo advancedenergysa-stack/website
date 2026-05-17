@@ -6,10 +6,10 @@ import { useState } from "react";
 
 import { BrandLogo } from "@/components/brand-logo";
 import { buttonVariants } from "@/components/ui/button";
-import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -54,45 +54,43 @@ export function SiteHeader() {
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
-            render={
-              <Button
-                variant="outline"
-                size="icon"
-                className="md:hidden"
-                aria-label="Open menu"
-              />
-            }
+            className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-aecc-green/20 bg-white/80 text-aecc-green shadow-sm backdrop-blur-sm transition-colors hover:bg-aecc-green/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aecc-green/40 md:hidden"
+            aria-label="Open menu"
           >
-            <Menu />
+            <Menu className="size-5" aria-hidden />
           </SheetTrigger>
-          <SheetContent side="right" className="w-full max-w-xs bg-white">
-            <SheetHeader>
-              <SheetTitle className="text-left text-aecc-green">
-                {brand.name}
-              </SheetTitle>
+          <SheetContent
+            side="right"
+            className="flex w-[min(100vw-1rem,20rem)] flex-col gap-0 border-white/50 bg-white/80 p-0 shadow-2xl backdrop-blur-2xl sm:max-w-xs"
+          >
+            <SheetHeader className="border-b border-white/50 bg-white/60 px-5 py-5 text-left">
+              <SheetTitle className="sr-only">{brand.fullName} menu</SheetTitle>
+              <BrandLogo className="h-8 w-auto max-w-[180px]" />
+              <p className="mt-2 text-xs text-muted-foreground">{brand.tagline}</p>
             </SheetHeader>
-            <nav className="mt-8 flex flex-col gap-4">
+
+            <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-3 py-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-base font-medium text-foreground/90 hover:text-aecc-green"
+                  className="rounded-xl px-4 py-3.5 text-base font-medium text-foreground/90 transition-colors hover:bg-aecc-green/10 hover:text-aecc-green active:bg-aecc-green/15"
                 >
                   {link.label}
                 </a>
               ))}
+            </nav>
+
+            <SheetFooter className="border-t border-white/50 bg-white/50 px-4 py-5">
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className={cn(
-                  buttonVariants(),
-                  "mt-4 bg-aecc-green text-white hover:bg-aecc-green-dark"
-                )}
+                className="inline-flex h-10 w-full items-center justify-center rounded-lg bg-aecc-green text-sm font-medium text-white transition-colors hover:bg-aecc-green-dark"
               >
                 Get in touch
               </a>
-            </nav>
+            </SheetFooter>
           </SheetContent>
         </Sheet>
       </div>
