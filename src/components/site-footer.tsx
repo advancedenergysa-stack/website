@@ -9,7 +9,6 @@ import {
 import Link from "next/link";
 
 import { BrandLogo } from "@/components/brand-logo";
-import { buttonVariants } from "@/components/ui/button";
 import {
   brand,
   keyClients,
@@ -18,7 +17,6 @@ import {
   services,
   stats,
 } from "@/lib/aecc-content";
-import { cn } from "@/lib/utils";
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -177,10 +175,7 @@ export function SiteFooter() {
             </ul>
             <a
               href="#contact"
-              className={cn(
-                buttonVariants({ size: "default" }),
-                "mt-6 w-full gap-2 bg-white text-aecc-green hover:bg-white/90 hover:text-aecc-green [a]:hover:bg-white/90 [a]:hover:text-aecc-green sm:w-auto"
-              )}
+              className="mt-6 inline-flex h-9 w-full items-center justify-center gap-2 rounded-lg border border-white/20 bg-white px-4 text-sm font-medium text-aecc-green shadow-sm transition-colors hover:border-white hover:bg-white hover:text-aecc-green-dark sm:w-auto"
             >
               Get in touch
               <ArrowRight className="size-4" aria-hidden />

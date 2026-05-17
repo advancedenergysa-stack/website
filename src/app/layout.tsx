@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   title: `${brand.name} — ${brand.fullName}`,
   description:
     "Advanced Energy Company (AECC), a subsidiary of MASCO Group, delivers integrated power EPC and energy solutions across Saudi Arabia.",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/favicon.png", type: "image/png" }],
+  },
   openGraph: {
     title: `${brand.name} — ${brand.fullName}`,
     description:
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#007a53",
   colorScheme: "light",
 };
 
