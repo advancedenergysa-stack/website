@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-import { BrandLogo } from "@/components/brand-logo";
 import { IconBadge } from "@/components/icon-badge";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -47,22 +46,33 @@ export function AeccHome() {
     <>
       <section
         id="home"
-        className="relative overflow-hidden border-b border-border bg-white"
+        className="relative min-h-[520px] overflow-hidden border-b border-border bg-white sm:min-h-[580px] lg:min-h-[640px]"
       >
+        <Image
+          src="/aecc/hero.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.35]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgb(0 122 83 / 0.12) 1px, transparent 0)",
-            backgroundSize: "28px 28px",
-          }}
+          className="absolute inset-0 bg-white/25 backdrop-blur-[1px]"
         />
-        <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-32">
-          <div className="max-w-xl">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-r from-white from-35% via-white/90 via-55% to-white/20 to-75% to-transparent"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent lg:from-white/40"
+        />
+        <div className="relative z-10 mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-12 lg:px-8 lg:py-24">
+          <div className="max-w-xl rounded-2xl border border-white/70 bg-white/75 p-6 shadow-lg shadow-black/5 backdrop-blur-md sm:p-8">
             <Badge
               variant="outline"
-              className="mb-4 gap-1.5 border-aecc-green/30 bg-aecc-green/5 text-aecc-green"
+              className="mb-4 gap-1.5 border-aecc-green/30 bg-white/80 text-aecc-green backdrop-blur-sm"
             >
               <Target className="size-3.5" aria-hidden />
               {brand.tagline}
@@ -92,7 +102,7 @@ export function AeccHome() {
                 href="#contact"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
-                  "gap-2"
+                  "gap-2 border-white/80 bg-white/60 backdrop-blur-sm hover:bg-white"
                 )}
               >
                 <Mail className="size-4" aria-hidden />
@@ -100,15 +110,14 @@ export function AeccHome() {
               </a>
             </div>
           </div>
-          <div className="relative flex flex-col items-center gap-8 lg:items-end">
-            <BrandLogo className="max-h-36 w-full max-w-sm sm:max-h-44 lg:max-w-md" priority />
+          <div className="flex flex-col gap-4 lg:max-w-md lg:self-end lg:pt-8">
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {stats.map((item) => {
                 const Icon = getIcon(item.icon);
                 return (
                   <div
                     key={item.label}
-                    className="flex flex-col items-center rounded-xl border border-border bg-white px-3 py-4 text-center shadow-sm"
+                    className="flex flex-col items-center rounded-xl border border-white/70 bg-white/80 px-3 py-4 text-center shadow-md shadow-black/5 backdrop-blur-md"
                   >
                     <IconBadge icon={Icon} size="sm" className="mb-2" />
                     <p className="text-lg font-bold text-aecc-green">{item.value}</p>
