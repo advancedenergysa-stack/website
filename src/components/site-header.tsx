@@ -21,7 +21,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-white/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/40 bg-white/70 backdrop-blur-xl backdrop-saturate-150">
       <div className="h-1 w-full bg-aecc-green" />
       <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="#home" className="flex shrink-0 items-center">
@@ -54,22 +54,22 @@ export function SiteHeader() {
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
-            className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-aecc-green/20 bg-white/80 text-aecc-green shadow-sm backdrop-blur-sm transition-colors hover:bg-aecc-green/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aecc-green/40 md:hidden"
+            className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-white/50 bg-white/60 text-aecc-green shadow-sm backdrop-blur-lg transition-colors hover:bg-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aecc-green/40 md:hidden"
             aria-label="Open menu"
           >
             <Menu className="size-5" aria-hidden />
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="flex w-[min(100vw-1rem,20rem)] flex-col gap-0 border-white/50 bg-white/80 p-0 shadow-2xl backdrop-blur-2xl sm:max-w-xs"
+            className="flex w-[min(100vw-1rem,20rem)] flex-col gap-0 border-white/40 bg-white/50 p-0 shadow-2xl backdrop-blur-3xl backdrop-saturate-150 sm:max-w-xs"
           >
-            <SheetHeader className="border-b border-white/50 bg-white/60 px-5 py-5 text-left">
+            <SheetHeader className="border-b border-white/40 bg-white/40 px-5 py-5 text-left backdrop-blur-2xl">
               <SheetTitle className="sr-only">{brand.fullName} menu</SheetTitle>
               <BrandLogo className="h-8 w-auto max-w-[180px]" />
               <p className="mt-2 text-xs text-muted-foreground">{brand.tagline}</p>
             </SheetHeader>
 
-            <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-3 py-4">
+            <nav className="flex flex-1 flex-col gap-1 overflow-y-auto bg-white/20 px-3 py-4 backdrop-blur-2xl">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -82,7 +82,7 @@ export function SiteHeader() {
               ))}
             </nav>
 
-            <SheetFooter className="border-t border-white/50 bg-white/50 px-4 py-5">
+            <SheetFooter className="border-t border-white/40 bg-white/40 px-4 py-5 backdrop-blur-2xl">
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}

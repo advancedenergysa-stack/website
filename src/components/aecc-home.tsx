@@ -58,7 +58,7 @@ export function AeccHome() {
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-white/25 backdrop-blur-[1px]"
+          className="absolute inset-0 bg-white/20 backdrop-blur-sm"
         />
         <div
           aria-hidden
@@ -70,7 +70,7 @@ export function AeccHome() {
         />
         <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10">
-            <div className="rounded-2xl border border-white/70 bg-white/75 p-6 shadow-lg shadow-black/5 backdrop-blur-md sm:p-8">
+            <div className="rounded-2xl border border-white/60 bg-white/60 p-6 shadow-lg shadow-black/5 backdrop-blur-xl backdrop-saturate-150 sm:p-8">
             <Badge
               variant="outline"
               className="mb-4 gap-1.5 border-aecc-green/30 bg-white/80 text-aecc-green backdrop-blur-sm"
@@ -127,7 +127,7 @@ export function AeccHome() {
               return (
                 <div
                   key={item.label}
-                  className="flex flex-col items-center rounded-xl border border-white/70 bg-white/80 px-3 py-4 text-center shadow-md shadow-black/5 backdrop-blur-md"
+                  className="flex flex-col items-center rounded-xl border border-white/60 bg-white/55 px-3 py-4 text-center shadow-md shadow-black/5 backdrop-blur-xl backdrop-saturate-150"
                 >
                   <IconBadge icon={Icon} size="sm" className="mb-2" />
                   <p className="text-lg font-bold text-aecc-green">{item.value}</p>
