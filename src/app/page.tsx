@@ -1,5 +1,5 @@
-import { ComingSoon } from "@/components/coming-soon";
+import { AeccHome } from "@/components/aecc-home";
 
 export default function Home() {
-  return <ComingSoon />;
+  return <AeccHome />;
 }
