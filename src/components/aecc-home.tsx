@@ -68,8 +68,9 @@ export function AeccHome() {
           aria-hidden
           className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent lg:from-white/40"
         />
-        <div className="relative z-10 mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-12 lg:px-8 lg:py-24">
-          <div className="max-w-xl rounded-2xl border border-white/70 bg-white/75 p-6 shadow-lg shadow-black/5 backdrop-blur-md sm:p-8">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+          <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10">
+            <div className="rounded-2xl border border-white/70 bg-white/75 p-6 shadow-lg shadow-black/5 backdrop-blur-md sm:p-8">
             <Badge
               variant="outline"
               className="mb-4 gap-1.5 border-aecc-green/30 bg-white/80 text-aecc-green backdrop-blur-sm"
@@ -110,24 +111,32 @@ export function AeccHome() {
               </a>
             </div>
           </div>
-          <div className="flex flex-col gap-4 lg:max-w-md lg:self-end lg:pt-8">
-            <div className="grid grid-cols-3 gap-3 sm:gap-4">
-              {stats.map((item) => {
-                const Icon = getIcon(item.icon);
-                return (
-                  <div
-                    key={item.label}
-                    className="flex flex-col items-center rounded-xl border border-white/70 bg-white/80 px-3 py-4 text-center shadow-md shadow-black/5 backdrop-blur-md"
-                  >
-                    <IconBadge icon={Icon} size="sm" className="mb-2" />
-                    <p className="text-lg font-bold text-aecc-green">{item.value}</p>
-                    <p className="mt-1 text-[10px] leading-tight text-muted-foreground sm:text-xs">
-                      {item.label}
-                    </p>
-                  </div>
-                );
-              })}
+          <div className="relative min-h-[240px] overflow-hidden rounded-2xl border border-white/60 shadow-xl shadow-black/10 sm:min-h-[300px] lg:min-h-[360px]">
+              <Image
+                src="/aecc/hero.png"
+                alt="AECC energy infrastructure — solar, substation, and transmission"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
+          </div>
+          <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-4">
+            {stats.map((item) => {
+              const Icon = getIcon(item.icon);
+              return (
+                <div
+                  key={item.label}
+                  className="flex flex-col items-center rounded-xl border border-white/70 bg-white/80 px-3 py-4 text-center shadow-md shadow-black/5 backdrop-blur-md"
+                >
+                  <IconBadge icon={Icon} size="sm" className="mb-2" />
+                  <p className="text-lg font-bold text-aecc-green">{item.value}</p>
+                  <p className="mt-1 text-[10px] leading-tight text-muted-foreground sm:text-xs">
+                    {item.label}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -251,15 +260,34 @@ export function AeccHome() {
               return (
                 <Card
                   key={project.name}
-                  className="overflow-hidden border-border bg-white shadow-sm transition-shadow hover:shadow-md"
+                  className="group overflow-hidden border-border bg-white p-0 shadow-sm transition-shadow hover:shadow-lg"
                 >
-                  <div className="flex items-center gap-4 border-b border-border bg-aecc-green/5 px-5 py-4">
-                    <IconBadge icon={Icon} size="md" />
-                    <CardTitle className="text-base leading-snug">
-                      {project.name}
-                    </CardTitle>
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent"
+                    />
+                    <div className="absolute right-3 top-3">
+                      <IconBadge
+                        icon={Icon}
+                        size="sm"
+                        className="border-white/30 bg-white/90 shadow-sm"
+                      />
+                    </div>
+                    <div className="absolute inset-x-0 bottom-0 p-4">
+                      <CardTitle className="text-base leading-snug text-white">
+                        {project.name}
+                      </CardTitle>
+                    </div>
                   </div>
-                  <CardHeader className="pb-2 pt-4">
+                  <CardHeader className="space-y-2 pb-2 pt-4">
                     <CardDescription className="space-y-2 text-xs">
                       <span className="flex items-center gap-1.5 font-medium text-aecc-green">
                         <Building2 className="size-3.5" aria-hidden />
@@ -271,7 +299,7 @@ export function AeccHome() {
                       </span>
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="pt-0">
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       {project.scope}
                     </p>

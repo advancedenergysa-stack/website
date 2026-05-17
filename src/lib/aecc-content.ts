@@ -135,6 +135,7 @@ export const projects: {
   site: string;
   scope: string;
   icon: IconName;
+  image: string;
 }[] = [
   {
     name: "New Badr Overhead Transmission Line",
@@ -143,6 +144,7 @@ export const projects: {
     scope:
       "EPC of two (2) new 110kV double circuits, approximately 2,950 kilometers supported lattice steel structures using 2×500mm² AAAC conductor per phase.",
     icon: "tower",
+    image: "/aecc/projects/new-badr-overhead.png",
   },
   {
     name: "Khafji Substation",
@@ -151,6 +153,7 @@ export const projects: {
     scope:
       "EPC of new 115/13.8kV indoor GIS substation, three (3) nos. 115/13.8kV, 67MVA power transformers.",
     icon: "factory",
+    image: "/aecc/projects/khafji.png",
   },
   {
     name: "Qatif Underground Cables",
@@ -159,6 +162,7 @@ export const projects: {
     scope:
       "Installation of 115kV underground cables from Qatif 115/13.8kV to Tarut 115/13.8kV Substation #2 with two routes.",
     icon: "cable",
+    image: "/aecc/projects/qatif.png",
   },
   {
     name: "New Badr Substation",
@@ -167,6 +171,7 @@ export const projects: {
     scope:
       "EPC of new 110/33/13.8kV indoor GIS substation with power transformers.",
     icon: "building",
+    image: "/aecc/projects/new-badr-substation.png",
   },
   {
     name: "Al-Kadrh Abu Sadad",
@@ -174,6 +179,7 @@ export const projects: {
     site: "KSA, Abha",
     scope: "EPC of new 132/33/13.8kV indoor GIS type substation.",
     icon: "zap",
+    image: "/aecc/projects/al-kadrh-abu-sadad.png",
   },
   {
     name: "Nimar Substation",
@@ -182,6 +188,7 @@ export const projects: {
     scope:
       "EPC of new 132/13.8kV indoor GIS substation, three (3) nos. 132/13.8kV, 67MVA power transformers.",
     icon: "factory",
+    image: "/aecc/projects/nimar.png",
   },
 ];
 
