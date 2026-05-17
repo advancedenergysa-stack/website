@@ -202,16 +202,12 @@ export const keyClients = [
 
 export const commitment = `At AECC, we understand the significance of long-lasting partnerships with clients and stakeholders. Our collaborative approach ensures that client requirements are thoroughly understood, and projects are tailor-made to meet their specific needs. We prioritize open communication, transparency, and accountability throughout the project lifecycle, fostering trust and confidence in our services.`;
 
-export const navLinks: {
-  href: string;
-  label: string;
-  icon: IconName;
-}[] = [
-  { href: "#overview", label: "Overview", icon: "building2" },
-  { href: "#services", label: "Services", icon: "wrench" },
-  { href: "#projects", label: "Projects", icon: "layers" },
-  { href: "#values", label: "Values", icon: "shield" },
-  { href: "#contact", label: "Contact", icon: "mapPin" },
+export const navLinks = [
+  { href: "#overview", label: "Overview" },
+  { href: "#services", label: "Services" },
+  { href: "#projects", label: "Projects" },
+  { href: "#values", label: "Values" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export const sectionIcons = {
