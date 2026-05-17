@@ -179,7 +179,7 @@ export function SiteFooter() {
               href="#contact"
               className={cn(
                 buttonVariants({ size: "default" }),
-                "mt-6 w-full gap-2 bg-white text-aecc-green hover:bg-white/90 sm:w-auto"
+                "mt-6 w-full gap-2 bg-white text-aecc-green hover:bg-white/90 hover:text-aecc-green [a]:hover:bg-white/90 [a]:hover:text-aecc-green sm:w-auto"
               )}
             >
               Get in touch
