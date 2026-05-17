@@ -1,10 +1,10 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+import { BrandLogo } from "@/components/brand-logo";
 import { buttonVariants } from "@/components/ui/button";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,14 +23,10 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-white/95 backdrop-blur-md">
       <div className="h-1 w-full bg-aecc-green" />
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link href="#home" className="flex items-center gap-3">
-          <Image
-            src="/aecc/page-01.png"
-            alt={brand.fullName}
-            width={140}
-            height={44}
-            className="h-10 w-auto object-contain object-left"
+      <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <Link href="#home" className="flex shrink-0 items-center">
+          <BrandLogo
+            className="h-9 w-auto max-w-[200px] sm:h-10 sm:max-w-[240px]"
             priority
           />
         </Link>

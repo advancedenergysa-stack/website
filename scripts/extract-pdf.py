@@ -6,10 +6,6 @@ OUT = os.path.join(os.path.dirname(__file__), "..", "public", "aecc")
 os.makedirs(OUT, exist_ok=True)
 
 doc = fitz.open(PDF)
-for i in range(doc.page_count):
-    doc[i].get_pixmap(matrix=fitz.Matrix(2, 2), alpha=False).save(
-        os.path.join(OUT, f"page-{i + 1:02d}.png")
-    )
 
 n = 0
 for pn in range(doc.page_count):
@@ -23,4 +19,4 @@ for pn in range(doc.page_count):
         with open(path, "wb") as f:
             f.write(base["image"])
 
-print(f"pages={doc.page_count} assets={n}")
+print(f"embedded assets={n} (page renders are not exported)")

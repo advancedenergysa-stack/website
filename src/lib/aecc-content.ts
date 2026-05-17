@@ -72,7 +72,7 @@ export const services = [
   {
     id: "construction",
     title: "Construction",
-    image: "/aecc/asset-p09-02.jpeg",
+    image: "/aecc/asset-p10-01.jpeg",
     items: [
       "EPC Project / Power",
       "EPC Project / Water",
@@ -84,7 +84,7 @@ export const services = [
   {
     id: "renewables",
     title: "Renewables Energy",
-    image: "/aecc/asset-p09-03.jpeg",
+    image: "/aecc/asset-p11-01.jpeg",
     items: [
       "Solar Power Projects",
       "Energy Efficiency",
@@ -96,7 +96,7 @@ export const services = [
   {
     id: "engineering",
     title: "Engineering Services",
-    image: "/aecc/asset-p09-01.jpeg",
+    image: "/aecc/asset-p09-03.jpeg",
     items: ["Primary Equipment", "Secondary Equipment"],
     description:
       "Comprehensive end-to-end engineering solutions backed by experienced professionals dedicated to meeting and exceeding client expectations.",
@@ -110,7 +110,7 @@ export const projects = [
     site: "KSA, Al Madina",
     scope:
       "EPC of two (2) new 110kV double circuits, approximately 2,950 kilometers supported lattice steel structures using 2×500mm² AAAC conductor per phase.",
-    image: "/aecc/page-14.png",
+    image: "/aecc/asset-p15-05.jpeg",
   },
   {
     name: "Khafji Substation",
@@ -118,7 +118,7 @@ export const projects = [
     site: "KSA, Khafji",
     scope:
       "EPC of new 115/13.8kV indoor GIS substation, three (3) nos. 115/13.8kV, 67MVA power transformers.",
-    image: "/aecc/page-14.png",
+    image: "/aecc/asset-p15-02.jpeg",
   },
   {
     name: "Qatif Underground Cables",
@@ -126,7 +126,7 @@ export const projects = [
     site: "KSA, Qatif",
     scope:
       "Installation of 115kV underground cables from Qatif 115/13.8kV to Tarut 115/13.8kV Substation #2 with two routes.",
-    image: "/aecc/page-15.png",
+    image: "/aecc/asset-p15-04.jpeg",
   },
   {
     name: "New Badr Substation",
@@ -134,14 +134,14 @@ export const projects = [
     site: "KSA, Madina",
     scope:
       "EPC of new 110/33/13.8kV indoor GIS substation with power transformers.",
-    image: "/aecc/page-15.png",
+    image: "/aecc/asset-p15-01.jpeg",
   },
   {
     name: "Al-Kadrh Abu Sadad",
     client: "Saudi Electricity Company (SEC)",
     site: "KSA, Abha",
     scope: "EPC of new 132/33/13.8kV indoor GIS type substation.",
-    image: "/aecc/page-15.png",
+    image: "/aecc/asset-p15-06.jpeg",
   },
   {
     name: "Nimar Substation",
@@ -149,7 +149,34 @@ export const projects = [
     site: "KSA, Riyadh",
     scope:
       "EPC of new 132/13.8kV indoor GIS substation, three (3) nos. 132/13.8kV, 67MVA power transformers.",
-    image: "/aecc/page-15.png",
+    image: "/aecc/asset-p15-03.jpeg",
+  },
+];
+
+export const keyClients = [
+  {
+    name: "Saudi Electricity Company",
+    logo: "/aecc/clients/client-02.jpeg",
+  },
+  {
+    name: "National Grid SA",
+    logo: "/aecc/clients/client-03.jpeg",
+  },
+  {
+    name: "NEOM",
+    logo: "/aecc/clients/client-04.jpeg",
+  },
+  {
+    name: "Saline Water Conversion Corporation",
+    logo: "/aecc/clients/client-05.jpeg",
+  },
+  {
+    name: "Royal Commission for Jubail & Yanbu",
+    logo: "/aecc/clients/client-06.jpeg",
+  },
+  {
+    name: "Saudi Aramco",
+    logo: "/aecc/clients/client-07.jpeg",
   },
 ];
 

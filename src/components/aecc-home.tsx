@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
+import { BrandLogo } from "@/components/brand-logo";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -23,6 +24,7 @@ import {
   brand,
   commitment,
   coreValues,
+  keyClients,
   mascoStats,
   mission,
   overview,
@@ -89,15 +91,8 @@ export function AeccHome() {
               </a>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <Image
-              src="/aecc/page-01.png"
-              alt={`${brand.fullName} logo`}
-              width={640}
-              height={400}
-              className="w-full object-contain"
-              priority
-            />
+          <div className="relative flex justify-center lg:justify-end">
+            <BrandLogo className="max-h-36 w-full max-w-sm sm:max-h-44 lg:max-w-md" priority />
           </div>
         </div>
       </section>
@@ -200,15 +195,6 @@ export function AeccHome() {
               </Card>
             ))}
           </div>
-          <div className="mt-10 overflow-hidden rounded-xl border border-border bg-white">
-            <Image
-              src="/aecc/page-09.png"
-              alt="Scope of services overview"
-              width={1200}
-              height={600}
-              className="h-auto w-full object-cover"
-            />
-          </div>
         </div>
       </section>
 
@@ -225,15 +211,14 @@ export function AeccHome() {
                 key={project.name}
                 className="overflow-hidden border-border bg-white shadow-sm transition-shadow hover:shadow-md"
               >
-                <div className="relative h-40 overflow-hidden bg-muted">
+                <div className="relative h-44 overflow-hidden bg-muted">
                   <Image
                     src={project.image}
                     alt={project.name}
                     fill
-                    className="object-cover object-top opacity-90"
+                    className="object-cover object-center"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
                 </div>
                 <CardHeader>
                   <CardTitle className="text-lg leading-snug">
@@ -304,15 +289,6 @@ export function AeccHome() {
               </Card>
             ))}
           </div>
-          <div className="mt-10 overflow-hidden rounded-xl border border-border">
-            <Image
-              src="/aecc/page-06.png"
-              alt="Core values"
-              width={1200}
-              height={500}
-              className="h-auto w-full object-cover"
-            />
-          </div>
         </div>
       </section>
 
@@ -324,14 +300,26 @@ export function AeccHome() {
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
             {commitment}
           </p>
-          <div className="mt-10 overflow-hidden rounded-xl border border-border bg-white p-4">
-            <Image
-              src="/aecc/page-17.png"
-              alt="Key clients"
-              width={1000}
-              height={400}
-              className="mx-auto h-auto w-full max-w-4xl object-contain"
-            />
+          <div className="mt-10">
+            <p className="mb-6 text-sm font-semibold uppercase tracking-widest text-aecc-green">
+              Key clients
+            </p>
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:gap-8">
+              {keyClients.map((client) => (
+                <div
+                  key={client.name}
+                  className="flex h-24 items-center justify-center rounded-xl border border-border bg-white px-4 py-3"
+                >
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    width={200}
+                    height={64}
+                    className="max-h-14 w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
