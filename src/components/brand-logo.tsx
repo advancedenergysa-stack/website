@@ -12,7 +12,8 @@ export function BrandLogo({
   priority = false,
   variant = "default",
 }: BrandLogoProps) {
-  const src = variant === "white" ? "/aecc/logo-white.png" : "/aecc/logo.png";
+  const src =
+    variant === "white" ? "/aecc/logo-white.png" : "/aecc/logo-header.png";
 
   return (
     <Image
