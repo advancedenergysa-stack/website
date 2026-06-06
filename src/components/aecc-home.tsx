@@ -144,7 +144,6 @@ export function AeccHome() {
       <section id="overview" className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="01"
             title="Company Overview"
             description="Innovative and sustainable energy solutions for the Kingdom."
             icon={sectionIcons.overview}
@@ -201,7 +200,6 @@ export function AeccHome() {
       <section id="services" className="bg-muted/30 py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="02"
             title="Scope of Services"
             description="Construction, renewables, and engineering solutions backed by experienced professionals."
             icon={sectionIcons.services}
@@ -249,7 +247,6 @@ export function AeccHome() {
       <section id="projects" className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="03"
             title="Completed Projects"
             description="Representative EPC engagements delivered for leading energy clients."
             icon={sectionIcons.projects}
@@ -314,7 +311,6 @@ export function AeccHome() {
       <section id="values" className="bg-muted/30 py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="04"
             title="Mission, Vision & Values"
             description="Core values that shape our actions and inspire us to raise the bar in the energy sector."
             icon={sectionIcons.values}
@@ -405,7 +401,6 @@ export function AeccHome() {
       <section id="contact" className="border-t border-border bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="05"
             title="Contact Information"
             description="Reach our team to discuss your next energy project."
             icon={sectionIcons.contact}
@@ -447,12 +442,10 @@ export function AeccHome() {
 }
 
 function SectionHeading({
-  eyebrow,
   title,
   description,
   icon,
 }: {
-  eyebrow: string;
   title: string;
   description: string;
   icon: IconName;
@@ -460,18 +453,13 @@ function SectionHeading({
   const Icon = getIcon(icon);
   return (
     <div className="max-w-2xl">
-      <div className="flex items-start gap-4">
-        <IconBadge icon={Icon} size="md" className="mt-1 shrink-0" />
-        <div>
-          <p className="text-sm font-semibold tracking-widest text-aecc-green">
-            {eyebrow}
-          </p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            {title}
-          </h2>
-          <p className="mt-3 text-base text-muted-foreground">{description}</p>
-        </div>
+      <div className="flex items-center gap-4">
+        <IconBadge icon={Icon} size="md" className="shrink-0" />
+        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          {title}
+        </h2>
       </div>
+      <p className="mt-3 text-base text-muted-foreground">{description}</p>
     </div>
   );
 }
