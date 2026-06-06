@@ -5,7 +5,7 @@ export const brand = {
   fullName: "Advanced Energy Company",
   tagline: "A subsidiary of MASCO Group",
   phone: "+966 (0) 11477 7742",
-  email: "advancedenergysa@gmail.com",
+  email: "AECC@AECC.com.sa",
   location: "Kingdom of Saudi Arabia",
   established: 2008,
   footerBlurb:
