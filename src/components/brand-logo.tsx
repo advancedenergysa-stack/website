@@ -18,8 +18,8 @@ export function BrandLogo({
     <Image
       src={src}
       alt="Advanced Energy"
-      width={320}
-      height={120}
+      width={300}
+      height={84}
       priority={priority}
       className={cn("h-auto w-auto object-contain", className)}
     />
