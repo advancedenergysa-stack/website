@@ -71,8 +71,11 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
-            <Link href="#home" className="inline-block rounded-lg bg-white/95 p-3">
-              <BrandLogo className="h-9 w-auto max-w-[200px] sm:h-10" />
+            <Link href="#home" className="inline-block">
+              <BrandLogo
+                variant="white"
+                className="h-9 w-auto max-w-[200px] sm:h-10"
+              />
             </Link>
             <p className="mt-4 text-lg font-semibold text-white">
               {brand.fullName}
