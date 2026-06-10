@@ -12,6 +12,7 @@ import {
   Target,
 } from "lucide-react";
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 import { IconBadge } from "@/components/icon-badge";
 import { Badge } from "@/components/ui/badge";
@@ -23,15 +24,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import {
   brand,
+  aeccOverview,
   commitment,
   coreValues,
   keyClients,
+  mascoOverview,
   mascoStats,
   mission,
-  overview,
   projects,
   sectionIcons,
   services,
@@ -148,9 +149,10 @@ export function AeccHome() {
             description="Innovative and sustainable energy solutions for the Kingdom."
             icon={sectionIcons.overview}
           />
+
           <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-start">
             <p className="whitespace-pre-line text-base leading-relaxed text-muted-foreground">
-              {overview}
+              {aeccOverview}
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
               {stats.map((item) => {
@@ -176,23 +178,65 @@ export function AeccHome() {
               })}
             </div>
           </div>
-          <Separator className="my-12" />
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {mascoStats.map((item) => {
-              const Icon = getIcon(item.icon);
-              return (
-                <div
-                  key={item.label}
-                  className="flex flex-col items-center rounded-lg border border-border bg-muted/30 px-3 py-4 text-center"
-                >
-                  <IconBadge icon={Icon} size="sm" className="mb-2" />
-                  <p className="text-xl font-bold text-aecc-green sm:text-2xl">
-                    {item.value}
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground">{item.label}</p>
-                </div>
-              );
-            })}
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            <Card className="border-aecc-green/20 bg-white shadow-sm">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-aecc-green">
+                  <IconBadge icon={Leaf} size="sm" />
+                  Mission
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="leading-relaxed text-muted-foreground">{mission}</p>
+              </CardContent>
+            </Card>
+            <Card className="border-aecc-green/20 bg-white shadow-sm">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-aecc-green">
+                  <IconBadge icon={Shield} size="sm" />
+                  Vision
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="leading-relaxed text-muted-foreground">{vision}</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="relative mt-12 overflow-hidden rounded-2xl border border-border bg-muted/40 p-6 sm:p-8">
+            <div
+              aria-hidden
+              className="absolute inset-y-0 left-0 w-1 bg-aecc-green"
+            />
+            <Badge
+              variant="outline"
+              className="mb-4 border-aecc-green/30 bg-white text-aecc-green"
+            >
+              Parent Company — MASCO Group
+            </Badge>
+            <p className="max-w-3xl text-base leading-relaxed text-muted-foreground">
+              {mascoOverview}
+            </p>
+            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {mascoStats.map((item) => {
+                const Icon = getIcon(item.icon);
+                return (
+                  <div
+                    key={item.label}
+                    className="flex flex-col items-center rounded-lg border border-border bg-white/80 px-3 py-4 text-center"
+                  >
+                    <IconBadge icon={Icon} size="sm" className="mb-2" />
+                    <p className="text-xl font-bold text-aecc-green sm:text-2xl">
+                      {item.value}
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {item.label}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -311,35 +355,11 @@ export function AeccHome() {
       <section id="values" className="bg-muted/30 py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Mission, Vision & Values"
+            title="Core Values"
             description="Core values that shape our actions and inspire us to raise the bar in the energy sector."
             icon={sectionIcons.values}
           />
-          <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            <Card className="border-aecc-green/20 bg-white">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-aecc-green">
-                  <IconBadge icon={Leaf} size="sm" />
-                  Mission
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="leading-relaxed text-muted-foreground">{mission}</p>
-              </CardContent>
-            </Card>
-            <Card className="border-aecc-green/20 bg-white">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-aecc-green">
-                  <IconBadge icon={Shield} size="sm" />
-                  Vision
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="leading-relaxed text-muted-foreground">{vision}</p>
-              </CardContent>
-            </Card>
-          </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {coreValues.map((value) => {
               const Icon = getIcon(value.icon);
               return (
@@ -378,19 +398,37 @@ export function AeccHome() {
               <Handshake className="size-4" aria-hidden />
               Key clients
             </p>
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:gap-8">
+            <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:gap-6">
               {keyClients.map((client) => (
                 <div
                   key={client.name}
-                  className="flex h-24 items-center justify-center rounded-xl border border-border bg-white px-4 py-3"
+                  className="overflow-hidden rounded-xl bg-white px-4 py-5 shadow-sm"
+                  style={
+                    {
+                      backgroundImage: `linear-gradient(white, white), linear-gradient(135deg, ${client.accentFrom}, ${client.accentTo})`,
+                      backgroundOrigin: "border-box",
+                      backgroundClip: "padding-box, border-box",
+                      border: "2px solid transparent",
+                    } satisfies CSSProperties
+                  }
                 >
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    width={200}
-                    height={64}
-                    className="max-h-14 w-auto object-contain"
-                  />
+                  <div className="flex h-20 w-full items-center justify-center sm:h-24">
+                    <Image
+                      src={client.logo}
+                      alt={client.name}
+                      width={280}
+                      height={96}
+                      className="h-20 w-auto max-w-full object-contain sm:h-24"
+                    />
+                  </div>
+                  <p className="mt-2 text-center text-[11px] font-normal leading-snug text-muted-foreground/55">
+                    {client.name}
+                  </p>
+                  {client.subtitle ? (
+                    <p className="mt-0.5 text-center text-[10px] leading-snug text-muted-foreground/40">
+                      {client.subtitle}
+                    </p>
+                  ) : null}
                 </div>
               ))}
             </div>

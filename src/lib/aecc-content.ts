@@ -37,11 +37,14 @@ export const mascoStats: {
   { value: "20+", label: "m³ of rocks ballasted", icon: "mountain" },
 ];
 
-export const overview = `Advanced Energy Company (AECC), established in 2008, has rapidly emerged as a leading force in the construction and management of energy projects within the Kingdom of Saudi Arabia.
+export const aeccOverview = `Advanced Energy Company (AECC), established in 2008, has rapidly emerged as a leading force in the construction and management of energy projects within the Kingdom of Saudi Arabia.
 
-Since our inception, AECC has been dedicated to providing innovative and sustainable energy solutions to meet the growing demands of the Kingdom's energy sector. Over the years, we have honed our expertise and garnered invaluable experience, enabling us to undertake complex and large-scale projects.
+Since our inception, AECC has been dedicated to providing innovative and sustainable energy solutions to meet the growing demands of the Kingdom's energy sector. Over the years, we have honed our expertise and garnered invaluable experience, enabling us to undertake complex and large-scale projects.`;
 
-AECC is a subsidiary of MASCO Group, with 17 years of unwavering efficiency and success in the Saudi market. MASCO's portfolio spans civil, architecture, environment, energy, mining, and building materials.`;
+export const mascoOverview = `AECC is a subsidiary of MASCO Group, with 17 years of unwavering efficiency and success in the Saudi market. MASCO's portfolio spans civil, architecture, environment, energy, mining, and building materials.`;
+
+/** @deprecated Use aeccOverview + mascoOverview */
+export const overview = `${aeccOverview}\n\n${mascoOverview}`;
 
 export const mission =
   "To deliver exceptional fully integrated power EPC and services with the utmost professionalism, utilization of advanced technology, and fostering enduring partnerships to create a greener, more efficient energy future.";
@@ -143,7 +146,7 @@ export const projects: {
 }[] = [
   {
     name: "New Badr Overhead Transmission Line",
-    client: "Saudi Electricity Company (SEC)",
+    client: "Saudi Energy Company (SE)",
     site: "KSA, Al Madina",
     scope:
       "EPC of two (2) new 110kV double circuits, approximately 2,950 kilometers supported lattice steel structures using 2×500mm² AAAC conductor per phase.",
@@ -152,7 +155,7 @@ export const projects: {
   },
   {
     name: "Khafji Substation",
-    client: "Saudi Electricity Company (SEC)",
+    client: "Saudi Energy Company (SE)",
     site: "KSA, Khafji",
     scope:
       "EPC of new 115/13.8kV indoor GIS substation, three (3) nos. 115/13.8kV, 67MVA power transformers.",
@@ -161,7 +164,7 @@ export const projects: {
   },
   {
     name: "Qatif Underground Cables",
-    client: "Saudi Electricity Company (SEC)",
+    client: "Saudi Energy Company (SE)",
     site: "KSA, Qatif",
     scope:
       "Installation of 115kV underground cables from Qatif 115/13.8kV to Tarut 115/13.8kV Substation #2 with two routes.",
@@ -170,7 +173,7 @@ export const projects: {
   },
   {
     name: "New Badr Substation",
-    client: "Saudi Electricity Company (SEC)",
+    client: "Saudi Energy Company (SE)",
     site: "KSA, Madina",
     scope:
       "EPC of new 110/33/13.8kV indoor GIS substation with power transformers.",
@@ -179,7 +182,7 @@ export const projects: {
   },
   {
     name: "Al-Kadrh Abu Sadad",
-    client: "Saudi Electricity Company (SEC)",
+    client: "Saudi Energy Company (SE)",
     site: "KSA, Abha",
     scope: "EPC of new 132/33/13.8kV indoor GIS type substation.",
     icon: "zap",
@@ -187,7 +190,7 @@ export const projects: {
   },
   {
     name: "Nimar Substation",
-    client: "Saudi Electricity Company (SEC)",
+    client: "Saudi Energy Company (SE)",
     site: "KSA, Riyadh",
     scope:
       "EPC of new 132/13.8kV indoor GIS substation, three (3) nos. 132/13.8kV, 67MVA power transformers.",
@@ -196,19 +199,71 @@ export const projects: {
   },
 ];
 
-export const keyClients = [
-  { name: "Saudi Electricity Company", logo: "/aecc/clients/client-02.jpeg" },
-  { name: "National Grid SA", logo: "/aecc/clients/client-03.jpeg" },
-  { name: "NEOM", logo: "/aecc/clients/client-04.jpeg" },
+export const keyClients: {
+  name: string;
+  logo: string;
+  subtitle?: string;
+  accentFrom: string;
+  accentTo: string;
+}[] = [
   {
-    name: "Saline Water Conversion Corporation",
-    logo: "/aecc/clients/client-05.jpeg",
+    name: "Saudi Energy Company (SE)",
+    logo: "/aecc/clients/se-logo.png",
+    subtitle: "Previously Saudi Electricity Company (SEC)",
+    accentFrom: "#0054A6",
+    accentTo: "#00A651",
+  },
+  {
+    name: "National Grid (NG) SA",
+    logo: "/aecc/clients/ng-logo.png",
+    subtitle: "Part of SEC",
+    accentFrom: "#1E5AA0",
+    accentTo: "#F58220",
+  },
+  {
+    name: "Project Development Company (PDC)",
+    logo: "/aecc/clients/pdc-logo.png",
+    subtitle: "Part of SE/SEC",
+    accentFrom: "#F58220",
+    accentTo: "#8CC63F",
+  },
+  {
+    name: "Aramco",
+    logo: "/aecc/clients/aramco-logo.png",
+    accentFrom: "#76BC21",
+    accentTo: "#00A3E0",
+  },
+  {
+    name: "Maaden",
+    logo: "/aecc/clients/maaden-logo.png",
+    accentFrom: "#C5B358",
+    accentTo: "#8B7340",
+  },
+  {
+    name: "MASCO",
+    logo: "/aecc/clients/masco-logo.png",
+    subtitle: "Parent company",
+    accentFrom: "#1B3664",
+    accentTo: "#008ED4",
+  },
+  {
+    name: "NEOM",
+    logo: "/aecc/clients/neom.png",
+    accentFrom: "#002A54",
+    accentTo: "#E21F26",
   },
   {
     name: "Royal Commission for Jubail & Yanbu",
-    logo: "/aecc/clients/client-06.jpeg",
+    logo: "/aecc/clients/rcjy-logo.png",
+    accentFrom: "#002B5C",
+    accentTo: "#00ADEF",
   },
-  { name: "Saudi Aramco", logo: "/aecc/clients/client-07.jpeg" },
+  {
+    name: "Saudi Water Authority",
+    logo: "/aecc/clients/swa-logo.png",
+    accentFrom: "#70C5FF",
+    accentTo: "#0047AB",
+  },
 ];
 
 export const commitment = `At AECC, we understand the significance of long-lasting partnerships with clients and stakeholders. Our collaborative approach ensures that client requirements are thoroughly understood, and projects are tailor-made to meet their specific needs. We prioritize open communication, transparency, and accountability throughout the project lifecycle, fostering trust and confidence in our services.`;
